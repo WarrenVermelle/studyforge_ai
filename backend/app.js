@@ -17,7 +17,7 @@ app.post('/ask', async (req, res) => {
 
     let prompt = JSON.stringify(req.body.keywords);
 
-    if (!prompt) {
+    if (!prompt || prompt === '""') {
         return res.status(404).json({
             success: false,
             message: "no keywords",
@@ -30,7 +30,7 @@ app.post('/ask', async (req, res) => {
             messages: [
                 { 
                     role: "user", 
-                    content: "Génère une histoire de moins de 200 mots avec ces mots clés : " + req.body.keywords + ".",
+                    content: "Génère une histoire de moins de 100 mots avec ces mots clés : " + req.body.keywords + ".",
                 }
             ],
         });
