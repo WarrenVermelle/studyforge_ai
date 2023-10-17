@@ -30,7 +30,7 @@ app.post('/ask', async (req, res) => {
             messages: [
                 { 
                     role: "user", 
-                    content: "le meilleur des deux : " + req.body.keywords + " ?",
+                    content: "Génère une histoire de moins de 200 mots avec ces mots clés : " + req.body.keywords + ".",
                 }
             ],
         });
