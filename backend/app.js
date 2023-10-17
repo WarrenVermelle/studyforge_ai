@@ -36,7 +36,7 @@ app.post('/ask', async (req, res) => {
             messages: [
                 { 
                     role: "user", 
-                    content: "Oui ou non?",
+                    content: "Génère une histoire de moins de 200 mots avec ces mots clés : " + $keyword_list,
                 }
             ],
         });
