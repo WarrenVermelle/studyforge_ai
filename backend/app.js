@@ -19,9 +19,8 @@ app.post('/ask', async (req, res) => {
             throw new Error("no prompt was provided");
         }
 
+        let keyword_list = "";
         if (prompt instanceof Array) {
-            let keyword_list = "";
-
             for(let i = 0; i < prompt.length; i++) {
                 if (i === prompt.length - 1) {
                     keyword_list += prompt[i] + '.';
@@ -29,6 +28,9 @@ app.post('/ask', async (req, res) => {
                     keyword_list += prompt[i] + ", ";
                 }
             }
+            console.log(keyword_list);
+        } else {
+            keyword_list = prompt;
         }
 
         const response = await openai.chat.completions.create({
@@ -36,7 +38,7 @@ app.post('/ask', async (req, res) => {
             messages: [
                 { 
                     role: "user", 
-                    content: "Génère une histoire de moins de 200 mots avec ces mots clés : " + $keyword_list,
+                    content: "Génère une histoire de moins de 200 mots avec ces mots clés : " + keyword_list,
                 }
             ],
         });
