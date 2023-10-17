@@ -1,42 +1,36 @@
 require("dotenv").config();
 
 const express = require('express');
+const cors = require('cors')
 const { OpenAI } = require("openai");
 
 const app = express();
+app.use(express.json());
+app.use(cors())
+
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-app.use(express.json());
-
 // post keywords for a story
 app.post('/ask', async (req, res) => {
-    const prompt = req.body.keywords;
+
+    let prompt = JSON.stringify(req.body.keywords);
+
+    if (!prompt) {
+        return res.status(404).json({
+            success: false,
+            message: "no keywords",
+        });
+    }
 
     try {
-        if (prompt == null) {
-            throw new Error("no prompt was provided");
-        }
-
-        if (prompt instanceof Array) {
-            let keyword_list = "";
-
-            for(let i = 0; i < prompt.length; i++) {
-                if (i === prompt.length - 1) {
-                    keyword_list += prompt[i] + '.';
-                } else {
-                    keyword_list += prompt[i] + ", ";
-                }
-            }
-        }
-
         const response = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages: [
                 { 
                     role: "user", 
-                    content: "Génère une histoire de moins de 200 mots avec ces mots clés : " + $keyword_list,
+                    content: "le meilleur des deux : " + req.body.keywords + " ?",
                 }
             ],
         });
