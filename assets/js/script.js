@@ -1,17 +1,23 @@
 const form = document.getElementsByClassName("form-search");
 const button = document.getElementsByClassName("btn-search");
 
-button[0].addEventListener("click", async function(){
+button[0].addEventListener("click", function(){
     const element = document.getElementById("choices-text-preset-values");
 
-    const response = await fetch("https://127.0.0.1:3000/ask", {
+    fetch("http://127.0.0.1:3000/ask", {
         method: "POST",
-        mode: "no-cors",
+        mode: "cors",
         headers: {
+            "Accept": "application/json, text/plain, */*",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(element.value),
+        body: JSON.stringify({
+            "keywords": element.value
+        }),
+    })
+    .then((response) => response.json())
+    .then(function(data) {
+        console.log(data);
     });
-
-    console.log(response);
+    
 });
