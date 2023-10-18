@@ -820,7 +820,7 @@ legend {
   -ms-flex-align: center;
       align-items: center;
   font-family: 'Poppins', sans-serif;
-  background: url(../img/background.jpg);
+  background: url(images/background.jpg);
   background-size: cover;
   background-position: center center;
   padding: 15px;
@@ -886,7 +886,7 @@ legend {
 .s004 form .inner-form .input-field .choices .choices__inner .choices__list .choices__item .choices__button {
   border-left: 0;
   color: #b2b2b2;
-  background-image: url(../images/icons/close.svg);
+  background-image: url(images/icons/close.svg);
   background-size: 14px auto;
   padding-left: 0;
   opacity: .3;

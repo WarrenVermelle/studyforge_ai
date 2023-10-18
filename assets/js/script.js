@@ -1,4 +1,4 @@
-const container = document.getElementsByClassName("s004");
+const container = document.getElementsByTagName("fieldset");
 const button = document.getElementsByClassName("btn-search");
 
 button[0].addEventListener("click", function(){
@@ -48,25 +48,41 @@ button[0].addEventListener("click", function(){
                     keywords_list.appendChild(keyword_element);
                 });
 
-                // share button
-                const share_container = document.createElement("div");
-                share_container.className = "share-container";
+                const icons_container = document.createElement("div");
+                icons_container.className = "icons-container";
 
+                // speech button
+                const speech_icon = document.createElement("img");
+                speech_icon.src = "./assets/img/speech_icon.png";
+                speech_icon.className = "speech-icon";
+
+                icons_container.appendChild(speech_icon);
+                keywords_list.appendChild(icons_container);
+
+                // share button
                 const share_icon = document.createElement("img");
                 share_icon.src = "./assets/img/share_icon.png";
                 share_icon.className = "share-icon";
                 
-                share_container.appendChild(share_icon);
-                keywords_list.appendChild(share_container);
+                icons_container.appendChild(share_icon);
+                keywords_list.appendChild(icons_container);
     
                 // create message element
                 const message_element = document.createElement("div");
-                message_element.className = "";
+                message_element.className = "completion-message";
                 message_element.innerHTML = data.message;
                 completion_container.appendChild(message_element);
 
                 waiting[0].style.display = "none";
             }
         });
+    }
+});
+
+document.addEventListener('click', function(element) {
+    if (element.target.className === 'speech-icon') {
+        const message = element.target.parentNode.parentNode.parentNode.lastElementChild.textContent;
+        let text = new SpeechSynthesisUtterance(message);
+        window.speechSynthesis.speak(text);
     }
 });
