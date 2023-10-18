@@ -6,16 +6,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80" 
-    networks:
-      - webapp
-    depends_on:
-      - nodejs
-
   nodejs:
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    networks:
-      - webapp
