@@ -3,8 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./favicon.ico" rel="favicon">
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
-        <link href="assets/css/main.css" rel="stylesheet" />
+        <link href="assets/thirdparties/choices/main.css" rel="stylesheet" />
+        <link href="assets/thirdparties/ellipsis/ellipsis.css" rel="stylesheet" />
         <link href="assets/css/style.css" rel="stylesheet" />
         <title>Père Castor - Générateur d'histoires</title>
     </head>
@@ -24,16 +26,18 @@
                             </button>
                         </div>
                     </div>
+                    <div class="waiting-container">
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
                 </fieldset>
             </form>
-            <div class="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
         </div>
-        <script src="assets/js/choices.js"></script>
+        <script src="assets/thirdparties/choices/choices.js"></script>
         <script>
             var textPresetVal = new Choices('#choices-text-preset-values', {
                 removeItemButton: true,
