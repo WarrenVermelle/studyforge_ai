@@ -6,7 +6,7 @@
     background: #fff;
     display: block;
     width: 100%;
-    padding: 10px 70px 10px 32px;
+    padding: 10px 32px 20px 32px;
     font-size: 18px;
     border-radius: 34px;
     display: flex;
@@ -16,6 +16,18 @@
     max-width: 790px;
 
     animation: append-animate .3s linear;
+}
+
+.share-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.share-icon {
+    height: 20px;
+    align-self: center;
+    cursor: pointer;
 }
 
 .completion_item {
@@ -35,7 +47,7 @@
 }
 
 .completion_list {
-    display: inline;
+    display: flex;
     margin: 0 0 10px 0;
     padding-left: 0;
     list-style: none;

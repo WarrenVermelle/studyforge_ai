@@ -47,6 +47,17 @@ button[0].addEventListener("click", function(){
                     keyword_element.innerHTML = keyword
                     keywords_list.appendChild(keyword_element);
                 });
+
+                // share button
+                const share_container = document.createElement("div");
+                share_container.className = "share-container";
+
+                const share_icon = document.createElement("img");
+                share_icon.src = "./assets/img/share_icon.png";
+                share_icon.className = "share-icon";
+                
+                share_container.appendChild(share_icon);
+                keywords_list.appendChild(share_container);
     
                 // create message element
                 const message_element = document.createElement("div");
