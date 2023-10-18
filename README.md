@@ -13,6 +13,14 @@ OPENAI_API_KEY="your-api-key"
 
 ## Getting started
 
+You can run the whole project inside Docker using the following command :
+
+```
+docker-compose up
+```
+
+Otherwise you can run the following commands on your own to get the server started :
+
 Get dependencies:
 ```
 npm install
@@ -20,7 +28,11 @@ npm install
 
 Run the node server:
 ```
+node server
+```
+OR
+```
 nodemon server
 ```
 
-Listen to `http://localhost:3000` by default or port mentionned in your CLI.
+Nodejs will be listening on `http://localhost:3000` by default.
