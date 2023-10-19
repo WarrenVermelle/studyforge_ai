@@ -44,7 +44,10 @@ app.post('/ask', async (req, res) => {
             message: completion,
         });
     } catch (error) {
-        console.log(error.message);
+        return res.status(404).json({
+            success: false,
+            error: error.message
+        });
     }
 });
 
@@ -71,7 +74,7 @@ async function getStories(db) {
         const storySnapshot = await getDocs(storiesCol);
         return storySnapshot.docs.map(doc => doc.data());
     } catch (error) {
-        console.log(error.message);
+        throw new Error(`Erreur : ${error.message}`);
     }
 }
 
@@ -79,7 +82,7 @@ async function getStory(db, id) {
     try {
         return (await getDoc(doc(db, "stories", id))).data()
     } catch (error) {
-        console.log(error.message);
+        throw new Error(`Erreur : ${error.message}`);
     }
 }
 
@@ -91,7 +94,10 @@ async function saveStory(db, id, keywords, content) {
             datetime: Date.now()
         });
     } catch (error) {
-        console.error(error.message);
+        return res.status(404).json({
+            success: false,
+            error: error.message
+        });
     }
 }
 
@@ -108,18 +114,28 @@ app.post('/save', async (req, res) => {
                 saved_id: id.toString()
             });
         });
-    } catch(error) {
-        console.log(error.message);
+    } catch (error) {
+        return res.status(404).json({
+            success: false,
+            error: error.message
+        });
     }
 });
 
 app.get('/story', async (req, res) => {
 
-    getStory(db, req.query.id).then((result) => {
-        return res.status(200).json({
-            story: result,
+    try {
+        getStory(db, req.query.id).then((result) => {
+            return res.status(200).json({
+                story: result,
+            });
         });
-    });
+    } catch (error) {
+        return res.status(404).json({
+            success: false,
+            error: error.message
+        });
+    }
 });
 
 // ------------------------------
