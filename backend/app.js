@@ -102,7 +102,12 @@ app.post('/save', async (req, res) => {
     let id = await getStories(db).then((result) => { return result.length++ });
 
     try {
-        saveStory(db, id.toString(), datas.keywords, datas.content);
+        saveStory(db, id.toString(), datas.keywords, datas.content).then(() => {
+            return res.status(200).json({
+                success: true,
+                saved_id: id.toString()
+            });
+        });
     } catch(error) {
         console.log(error.message);
     }
@@ -118,5 +123,20 @@ app.get('/story', async (req, res) => {
 });
 
 // ------------------------------
+
+app.get('/story/:id', async (req, res) => {
+
+    getStory(db, req.params.id).then((response) => {
+        res.send(`
+            <html> 
+                <body>
+                    <div>keywords: ${response.keywords}</div>
+                    <div>content: ${response.content}</div>
+                </body>
+            </html>
+        `);
+    });
+    
+})
 
 module.exports = app;
