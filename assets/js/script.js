@@ -56,7 +56,7 @@ button[0].addEventListener('click', function(){
                 const speech_icon = document.createElement('img');
                 speech_icon.className = 'speech-icon';
                 speech_icon.src = './assets/img/speech_icon.png';
-                share_icon.title = 'Read message';
+                speech_icon.title = 'Read message';
 
                 icons_container.appendChild(speech_icon);
                 keywords_list.appendChild(icons_container);
