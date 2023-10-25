@@ -1,0 +1,88 @@
+.form-search {
+    width: 100%;
+    max-width: 790px;
+}
+
+fieldset {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+legend {
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 50px;
+    cursor: default;
+}
+
+.inner-form {
+    width: 100%;
+}
+
+.input-field {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+#choices-text-preset-values {
+    border-radius: 34px;
+    min-height: 50px;
+    background: transparent;
+    border: 0;
+    background: #fff;
+    display: block;
+    width: 100%;
+    padding: 10px 70px 10px 32px;
+    color: #666;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-items: center;
+    line-height: 1.15;
+    font-size: 20px;
+}
+
+::placeholder {
+    color: #333;
+    font-size: 16px;
+}
+
+#choices-text-preset-values:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-search {
+    width: 70px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    width: 40px;
+    height: 40px;
+}
+
+.waiting-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

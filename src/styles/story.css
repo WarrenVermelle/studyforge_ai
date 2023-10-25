@@ -1,0 +1,78 @@
+.story {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 70px;
+    max-width: 790px;
+    padding: 10px 32px 20px 32px;
+    margin-bottom: 17px;
+
+    border: 0;
+    border-radius: 34px;
+    background: #fff;
+    
+    font-size: 18px;
+}
+
+.story-head {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.prompt {
+    display: inline-block;
+    vertical-align: middle;
+
+    background: #e7e7e7;
+    color: #333;
+
+    padding: 0 20px;
+    margin-right: 3.75px;
+    margin-bottom: 3.75px;
+
+    border: 0;
+    border-radius: 20px;
+
+    line-height: 33px;
+    font-size: 16px;
+    font-weight: 500;
+    word-break: break-all;
+}
+
+.icons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.speech-icon {
+    height: 20px;
+    align-self: center;
+    cursor: pointer;
+    margin: 0 5px 0 5px;
+}
+
+.share-icon {
+    height: 20px;
+    align-self: center;
+    cursor: pointer;
+    margin: 0 5px 0 5px;
+}
+
+.btn-mic {
+    width: 70px;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    align-items: center;
+}
+
+.btn-mic:hover {
+    fill: #000;
+}
