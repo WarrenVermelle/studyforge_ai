@@ -31,7 +31,7 @@ function StoryPage () {
                 <>
                     <h1 className='title'>
                         Cette histoire te plait ? 
-                        <Link to="/" style={{ textDecoration: 'none' }} >
+                        <Link to='/' style={{ textDecoration: 'none' }} >
                             <h2 className='subtitle'>À toi de créer la tienne, ici !</h2>
                         </Link>
                     </h1>

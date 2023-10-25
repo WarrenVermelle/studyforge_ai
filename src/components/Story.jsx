@@ -39,22 +39,22 @@ function Story({user_prompt, content, share}) {
     }
 
     return(
-        <div className="story" >
-            <div className="story-head">
-                <div className="prompt">{user_prompt}</div>
-                <div className="icons">
-                    <img className="speech-icon" src={speechIcon} alt="Bouton lecture" title="Lire le message" 
+        <div className='story' >
+            <div className='story-head'>
+                <div className='prompt'>{user_prompt}</div>
+                <div className='icons'>
+                    <img className='speech-icon' src={speechIcon} alt='Bouton lecture' title='Lire le message' 
                         onClick={playSpeech} />
 
                     { share
-                        ? <img className="share-icon" src={shareIcon} alt="Bouton partage" title="Partager le lien" 
+                        ? <img className='share-icon' src={shareIcon} alt='Bouton partage' title='Partager le lien' 
                             onClick={shareLink} />
                         : null
                     }
                     
                 </div>
             </div>
-            <div className="story-body">
+            <div className='story-body'>
                 {content}
             </div> 
         </div>

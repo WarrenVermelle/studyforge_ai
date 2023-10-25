@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Story from "./Story";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import Story from './Story';
 import '../styles/stories.css';
 
 function Stories({story}) {
@@ -8,13 +8,13 @@ function Stories({story}) {
     const [stories, setStories] = useState([]);
 
     useEffect(() => {
-        if (story.success !== "") {
+        if (story.success !== '') {
             setStories(stories => [...stories, story]);
         }
     }, [story])
 
     return (
-        <div className="stories" scrollTo={{top: 0}}>
+        <div className='stories' scrollTo={{top: 0}}>
             {stories.map((story) => (
                 <motion.div
                     key={stories.indexOf(story)}

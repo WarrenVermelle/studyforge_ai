@@ -14,7 +14,7 @@ root.render(
             <Routes>
                 <Route path='/' element={<Search />} />
                 <Route path='/story/:id' element={<Story />} />
-                <Route path="*" element={<Error />} />
+                <Route path='*' element={<Error />} />
             </Routes>
         </Router>
     </div>
