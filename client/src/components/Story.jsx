@@ -29,7 +29,7 @@ function Story({user_prompt, content, share}) {
             });
             const data = await response.json();
 
-            navigator.clipboard.writeText('http://localhost:3000/story/' + data.story_id).then(() => {
+            navigator.clipboard.writeText('http://localhost:8080/story/' + data.story_id).then(() => {
                 toast.info('Lien copié dans le presse-papier.')
             });
         } catch (error) {

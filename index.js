@@ -7,8 +7,22 @@ const { initializeApp } = require('firebase/app');
 const { getFirestore, doc, collection, getDoc, getDocs, addDoc} = require('firebase/firestore');
 
 const app = express();
+
 app.use(express.json());
-app.use(cors())
+app.use(express.static('client/build'));
+app.use(cors());
+
+const path = require('path');
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
+
+const PORT = process.env.PORT || 8080;
+
+console.log('server started on port: ', PORT);
+app.listen(PORT);
+
+// ---------- SETUP OPENAI ----------
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
