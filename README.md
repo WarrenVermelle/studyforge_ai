@@ -34,35 +34,33 @@ You can run the whole project inside Docker using the following command :
 docker-compose up
 ```
 
-It will setup a nginx server (frontend) and node server (backend) locally.
+It will setup a node server locally.
 
 Otherwise you can run the following commands on your own to run the project :
 
 First, you need to get project's dependencies :
 
+At the root folder and client folder
 ```
 npm install
 ```
-Next, you can start the client :
+
+Next, you can build the app in client folder :
+```
+npm run build
+```
+
+Then run the server that will be serving the builded app, at the root of the project :
 
 ```
-npm start
+node index.js
 ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+or
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-And then, start the node.js server from `./server/`:
-
+If you don't want to restart the server after editing.
 ```
-node server
-```
-OR
-```
-nodemon server
+nodemon index.js
 ```
 
 Node.js will be listening on [http://localhost:8080](http://localhost:8080) by default.
