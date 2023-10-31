@@ -47,7 +47,7 @@ function StoryPage () {
 
     useEffect(() => {
         getStory();
-    }, []);
+    });
 
     return (
         <ShowStory story={story} />
