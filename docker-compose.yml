@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  node:
+    container_name: node-server
+    image: node-image
+    build:
+      context: .
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    command: [ "node", "index.js" ]
+
+  # react:
+  #   container_name: react-app
+  #   image: react-image
+  #   build:
+  #     context: ./client
+  #   command: [ "npm", "run", "build" ]
+  #   links:
+  #     - node
