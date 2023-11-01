@@ -47,6 +47,7 @@ function StoryPage () {
 
     useEffect(() => {
         getStory();
+        // eslint-disable-next-line
     }, []);
 
     return (
