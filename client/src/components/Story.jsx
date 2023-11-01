@@ -13,9 +13,9 @@ function Story({user_prompt, content, share}) {
     async function shareLink() {
         
         try {
-            const response = await fetch('http://localhost:8080/save', {
+            const response = await fetch(window.location.origin + '/save', {
                 method: 'POST',
-                mode: 'cors',
+                mode: 'same-origin',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ function Story({user_prompt, content, share}) {
             });
             const data = await response.json();
 
-            navigator.clipboard.writeText('http://localhost:8080/story/' + data.story_id).then(() => {
+            navigator.clipboard.writeText(window.location.origin + '/story/' + data.story_id).then(() => {
                 toast.info('Lien copié dans le presse-papier.')
             });
         } catch (error) {

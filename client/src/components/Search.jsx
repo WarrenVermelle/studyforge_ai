@@ -18,9 +18,9 @@ function Search() {
         if (inputRef.current.value) {
             setLoading(true);
             try {
-                const response = await fetch('http://localhost:8080/ask', {
+                const response = await fetch(window.location.origin + '/ask', {
                     method: 'POST',
-                    mode: 'cors',
+                    mode: 'same-origin',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',

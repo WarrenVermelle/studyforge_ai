@@ -10,9 +10,9 @@ function StoryPage () {
     const [story, setStory] = useState({});
 
     async function getStory() {
-        const response = await fetch('http://localhost:8080/story', {
+        const response = await fetch(window.location.origin + '/story', {
             method: 'POST',
-            mode: 'cors',
+            mode: 'same-origin',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ function StoryPage () {
 
     useEffect(() => {
         getStory();
-    });
+    }, []);
 
     return (
         <ShowStory story={story} />

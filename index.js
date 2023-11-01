@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const express = require('express');
-const cors = require('cors')
 const { OpenAI } = require('openai');
 const { initializeApp } = require('firebase/app');
 const { getFirestore, doc, collection, getDoc, getDocs, addDoc} = require('firebase/firestore');
@@ -10,7 +9,6 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static('client/build'));
-app.use(cors());
 
 const path = require('path');
 app.get('*', (req, res) => {
