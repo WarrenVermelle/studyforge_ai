@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const setRateLimit = require('express-rate-limit');
 const { OpenAI } = require('openai');
 const { initializeApp } = require('firebase/app');
 const { getFirestore, doc, collection, getDoc, getDocs, addDoc} = require('firebase/firestore');
@@ -9,6 +10,18 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static('client/build'));
+
+const rateLimitMiddleware = setRateLimit({
+    windowMs: 60 * 1000,
+    max: 2,
+    message: {
+        status: 429,
+        error: "Too many requests"
+    },
+    headers: true,
+});
+
+app.use(rateLimitMiddleware);
 
 const path = require('path');
 app.get('*', (req, res) => {
