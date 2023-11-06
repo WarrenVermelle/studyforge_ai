@@ -1,12 +1,14 @@
 require('dotenv').config();
 
 const express = require('express');
+const helmet = require('helmet');
 const { OpenAI } = require('openai');
 const { initializeApp } = require('firebase/app');
 const { getFirestore, doc, collection, getDoc, getDocs, addDoc} = require('firebase/firestore');
 
 const app = express();
 
+app.use(helmet());
 app.use(express.json());
 app.use(express.static('client/build'));
 
@@ -29,7 +31,7 @@ const openai = new OpenAI({
 // ---------- ask chatGPT route ----------
 
 app.post('/ask', async (req, res) => {
-
+    await delay(1000);
     let prompt = JSON.stringify(req.body.user_prompt);
     
     if (!prompt || prompt === '""') {
