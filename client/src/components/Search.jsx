@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 import SyncLoader from 'react-spinners/SyncLoader';
 import Stories from './Stories';
 import '../styles/search.css';
+import 'react-toastify/dist/ReactToastify.css';
 import searchIcon from '../assets/icons/search-icon.svg';
 
 function Search() {
@@ -30,10 +32,14 @@ function Search() {
                     }),
                 });
                 const data = await response.json();
-                setStory(data);
+                if ('status' in data && data.status === 429) {
+                    toast.warning('Trop de requêtes ! Veuillez attendre 1 minute.');
+                } else {
+                    setStory(data);
+                }
                 setLoading(false);
             } catch (error) {
-                console.log(error.message);
+                console.log(error);
             }
         }
 
