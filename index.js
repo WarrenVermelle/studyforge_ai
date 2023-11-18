@@ -13,7 +13,7 @@ app.use(express.static('client/build'));
 
 const rateLimitMiddleware = setRateLimit({
     windowMs: 60 * 1000,
-    max: 2,
+    max: 5,
     message: {
         status: 429,
         error: "Too many requests"
