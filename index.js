@@ -24,9 +24,6 @@ const rateLimitMiddleware = setRateLimit({
 app.use(rateLimitMiddleware);
 
 const path = require('path');
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-});
 
 const PORT = process.env.PORT || 8080;
 
@@ -155,6 +152,10 @@ app.post('/story', async (req, res) => {
             error: error.message
         });
     }
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 module.exports = app;
