@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const express = require('express');
-const helmet = require('helmet');
 const setRateLimit = require('express-rate-limit');
 const { OpenAI } = require('openai');
 const { initializeApp } = require('firebase/app');
@@ -9,7 +8,6 @@ const { getFirestore, doc, collection, getDoc, getDocs, addDoc} = require('fireb
 
 const app = express();
 
-app.use(helmet());
 app.use(express.json());
 app.use(express.static('client/build'));
 
@@ -26,6 +24,9 @@ const rateLimitMiddleware = setRateLimit({
 app.use(rateLimitMiddleware);
 
 const path = require('path');
+app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
 
 const PORT = process.env.PORT || 8080;
 
@@ -41,7 +42,7 @@ const openai = new OpenAI({
 // ---------- ask chatGPT route ----------
 
 app.post('/ask', async (req, res) => {
-    await delay(1000);
+
     let prompt = JSON.stringify(req.body.user_prompt);
     
     if (!prompt || prompt === '""') {
@@ -154,10 +155,6 @@ app.post('/story', async (req, res) => {
             error: error.message
         });
     }
-});
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 module.exports = app;
