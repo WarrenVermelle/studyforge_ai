@@ -1,6 +1,6 @@
-# Pere Castor
+# Studyforge AI
 
-Pere Castor is a student web project in the form of a web client which aims to generate stories with keywords.
+Studyforge AI is a student web project in the form of a web client which aims to generate stories with keywords.
 
 Stories are generated with the completions engine API from OpenAI.
 
