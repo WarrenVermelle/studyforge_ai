@@ -64,3 +64,13 @@ nodemon index.js
 ```
 
 Node.js will be listening on [http://localhost:8080](http://localhost:8080) by default.
+
+- - - -
+## Usage
+
+![usage](https://github.com/WarrenVermelle/pere_castor/assets/80685095/317e848c-6893-4173-b823-7daf03d69c86)
+
+1. Type keywords you want to find into your generated story
+2. Once ready, all your generated stories will appear here
+3. You can copy the link of this story to your clipboard and share it with anyone
+4. This button converts the text to speech
