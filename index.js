@@ -1,6 +1,9 @@
 require('dotenv').config();
 
 const express = require('express');
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 const setRateLimit = require('express-rate-limit');
 const { OpenAI } = require('openai');
 const { initializeApp } = require('firebase/app');
@@ -10,13 +13,14 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static('client/build'));
+app.use(express.static(__dirname + '/static', { dotfiles: 'allow' }));
 
 const rateLimitMiddleware = setRateLimit({
     windowMs: 60 * 1000,
     max: 5,
     message: {
         status: 429,
-        error: "Too many requests"
+        error: 'Too many requests'
     },
     headers: true,
 });
@@ -28,10 +32,18 @@ app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
-const PORT = process.env.PORT || 8080;
+http.createServer(app).listen(8080, () => {
+    console.log('Server listening on port 8080');
+});
 
-console.log('server started on port: ', PORT);
-app.listen(PORT);
+// https.createServer({
+//     key: fs.readFileSync('/etc/letsencrypt/studyforge/key.pem'),
+//     cert: fs.readFileSync('/etc/letsencrypt/studyforge/cert.pem'),
+//     ca: fs.readFileSync('/etc/letsencrypt/path/chain.pem')
+// }, app)
+// .listen(4043, () => {
+//     console.log('Server listening on port 4043');
+// });
 
 // ---------- SETUP OPENAI ----------
 
