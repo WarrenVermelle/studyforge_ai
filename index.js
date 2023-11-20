@@ -14,9 +14,14 @@ const rateLimitMiddleware = setRateLimit({
     max: 10,
     message: {
         status: 429,
-        error: "Too many requests"
+        error: 'Too many requests'
     },
     headers: true,
+});
+
+app.use((req, res, next) => {
+    res.setHeader('X-Robots-Tag', 'noindex')
+    next();
 });
 
 app.use(rateLimitMiddleware);
