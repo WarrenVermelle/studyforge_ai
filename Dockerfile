@@ -17,8 +17,7 @@ WORKDIR /app
 COPY index.js .
 COPY .env .
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 8080
 
 # run the server
 CMD ["npm run", "start-prod"]

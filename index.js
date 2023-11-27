@@ -1,9 +1,5 @@
 require('dotenv').config();
 
-const fs = require('fs');
-const http = require('http');
-const https = require('https');
-
 const express = require('express');
 const setRateLimit = require('express-rate-limit');
 
@@ -28,19 +24,9 @@ app.use(rateLimitMiddleware);
 app.use(express.json());
 app.use(express.static('client/build'));
 
-http.createServer(app).listen(80, () => {
-    console.log(process.env.NODE_ENV + ' server listening on port: ', 80);
-})
-
-if (process.env.NODE_ENV === 'production') {
-    https.createServer({
-        key: fs.readFileSync('path/to/key.pem'),
-        cert: fs.readFileSync('path/to/cert.pem')
-    }, app)
-    .listen(443, () => {
-        console.log('production server listening on port: ', 443);
-    })
-}
+app.listen(8080, () => {
+    console.log(process.env.NODE_ENV + ' server listening on port: ', 8080);
+});
 
 /* ---------- routes ---------- */
 
